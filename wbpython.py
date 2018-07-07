@@ -1,11 +1,24 @@
 from flask import Flask, render_template
+import datetime
+
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
     # return "Hello, world!!!!!"
-    return render_template("page0.html")
+    headline = "Hello World!!!"
+    now = datetime.datetime.now()
+    new_year = now.month == 7 and now.day == 8
+    names = ['vitto', 'pipppo', 'topolino','paperino']
+    return render_template("index.html", names = names)
+
+@app.route("/bye")
+def bye():
+    headline = "Bye World!!!"
+    return render_template("index.html", headline=headline)
+
+
 # @app.route("/david")
 # def david():
 #     return "Hello David"
